@@ -44,6 +44,10 @@ struct SECSCommandParameters
 	SECSManufacturers manufacturer;
 	// 接收消息回调窗口的注册名
 	CString hwndRegisterName;
+	// 亚太配置文件路径
+	CString kingKGPRJFilePath;
+	// 亚太配置配方路径
+	CString kingRecipeFilePath;
 
 	SECSCommandParameters()
 	{

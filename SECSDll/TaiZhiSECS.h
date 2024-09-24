@@ -25,8 +25,6 @@ public:
 	CTaiZhiSECS(void);
 	~CTaiZhiSECS(void);
 
-	bool bExitEventSocketThread;
-
 	// 事件数组
 	CSafeArray m_eventArray;
 	// 报警数组
@@ -47,6 +45,5 @@ public:
 
 private:
 	CSECSSocket *m_socket;
-	CWinThread *m_pEventSocketThread;
 };
 

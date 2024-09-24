@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "SECSManager.h"
 #include "TaiZhiSECS.h"
+#include "KingExSECS.h"
 
 CSECSManager::CSECSManager(void)
 {
@@ -9,7 +10,7 @@ CSECSManager::CSECSManager(void)
 
 CSECSManager::~CSECSManager(void)
 {
-	m_secs = nullptr;
+	
 }
 
 void CSECSManager::SECS_SetCommandParameters(SECSCommandParameters parameters)
@@ -21,50 +22,53 @@ void CSECSManager::SECS_SetCommandParameters(SECSCommandParameters parameters)
 		secs->m_parameters = parameters;
 		m_secs = secs;
 	}
+
+	if (parameters.manufacturer == SECSManufacturers_KingEx && m_secs == nullptr)
+	{
+		CKingExSECS *secs = new CKingExSECS();
+		secs->m_parameters = parameters;
+		m_secs = secs;
+	}
 }
 
 void CSECSManager::SECS_Connect()
 {
-	if (m_manufacturner == SECSManufacturers_TaiZhi && m_secs != nullptr)
+	if (m_secs != nullptr)
 	{
-		CTaiZhiSECS *taiZhi = dynamic_cast<CTaiZhiSECS *>(m_secs);
-		taiZhi->SECS_Connect();
+		m_secs->SECS_Connect();
 	}
 }
 
 void CSECSManager::SECS_Disconnect()
 {
-	if (m_manufacturner == SECSManufacturers_KingEx && m_secs == nullptr)
+	if (m_secs != nullptr)
 	{
-		CTaiZhiSECS *taiZhi = dynamic_cast<CTaiZhiSECS *>(m_secs);
-		taiZhi->SECS_Disconnect();
+		m_secs->SECS_Disconnect();
+		m_secs = nullptr;
 	}
 }
 
 void CSECSManager::SECS_EventReport(int evID, std::map<CString, CString> stringMap)
 {
-	if (m_manufacturner == SECSManufacturers_TaiZhi && m_secs != nullptr)
+	if (m_secs != nullptr)
 	{
-		CTaiZhiSECS *taiZhi = dynamic_cast<CTaiZhiSECS *>(m_secs);
-		taiZhi->SECS_EventReport(evID, stringMap);
+		m_secs->SECS_EventReport(evID, stringMap);
 	}
 }
 
 void CSECSManager::SECS_AlarmReport(int alID)
 {
-	if (m_manufacturner == SECSManufacturers_TaiZhi && m_secs != nullptr)
+	if (m_secs != nullptr)
 	{
-		CTaiZhiSECS *taiZhi = dynamic_cast<CTaiZhiSECS *>(m_secs);
-		taiZhi->SECS_AlarmReport(alID);
+		m_secs->SECS_AlarmReport(alID);
 	}
 }
 
 void CSECSManager::SECS_ClearAlarmReport(int alID)
 {
-	if (m_manufacturner == SECSManufacturers_TaiZhi && m_secs != nullptr)
+	if (m_secs != nullptr)
 	{
-		CTaiZhiSECS *taiZhi = dynamic_cast<CTaiZhiSECS *>(m_secs);
-		taiZhi->SECS_ClearAlarmReport(alID);
+		m_secs->SECS_ClearAlarmReport(alID);
 	}
 }
 
@@ -101,10 +105,21 @@ SECSConnectStatus CSECSManager::SECS_ConnectStatus()
 SECSConnectModel CSECSManager::SECS_SwitchModel(SECSConnectModel targetModel, bool sendEvent /* = true */)
 {
 	m_secs->m_parameters.secsModel = targetModel;
-	if (sendEvent)
+	if (m_manufacturner == SECSManufacturers_TaiZhi && m_secs != nullptr)
 	{
-		std::map<CString, CString> tempMap;
-		m_secs->SECS_EventReport(targetModel, tempMap);
+		CTaiZhiSECS *taiZhi = dynamic_cast<CTaiZhiSECS *>(m_secs);
+		if (sendEvent)
+		{
+			std::map<CString, CString> tempMap;
+			taiZhi->SECS_EventReport(targetModel, tempMap);
+		}
 	}
+
+	if (m_manufacturner == SECSManufacturers_KingEx && m_secs != nullptr)
+	{
+		CKingExSECS *king = dynamic_cast<CKingExSECS *>(m_secs);
+		king->SECS_SwitchConnectModel(targetModel);
+	}
+
 	return m_secs->m_parameters.secsModel;
 }

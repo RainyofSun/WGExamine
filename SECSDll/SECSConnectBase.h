@@ -20,6 +20,8 @@
 
 using namespace std;
 
+UINT EventSocketThread(LPVOID lpParameter);
+
 #define DLL_EXPORT __declspec(dllexport)
 class DLL_EXPORT CSECSConnectBase
 {
@@ -43,7 +45,6 @@ public:
 	 * 功能：断开连接SECS
 	 */ 
 	virtual void SECS_Disconnect(){};
-
 	/**
 	 * 功能：事件上报
 	 * 输入：
@@ -62,8 +63,17 @@ public:
 	 */ 
 	virtual void SECS_ClearAlarmReport(int alID){};
 
+protected:
+	/**
+	 * 功能：开启事件线程
+	 */ 
+	void resumeSECSThread();
+
 public:
 	SECSCommandParameters m_parameters;
+	bool bExitEventSocketThread;
 
+protected:
+	CWinThread *m_pEventSocketThread;
 };
 

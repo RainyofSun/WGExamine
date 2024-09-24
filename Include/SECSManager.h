@@ -8,11 +8,11 @@
  * 描述：SECS的管理类
  *
  * ----------------------------------------------------------------
- * 修改人：
- * 时间：
+ * 修改人：刘冉
+ * 时间：2024-9-24
  * 修改说明：
- *
- * 版本：
+ *	1.完成泰治SECS测试
+ * 版本：V1.0.0
  *----------------------------------------------------------------*/
 #pragma once
 #include "SECSConnectBase.h"
@@ -24,21 +24,23 @@ public:
 	CSECSManager(void);
 	~CSECSManager(void);
 
-	// SECS 当前的模式
-	SECSConnectModel SECS_ConnectModel();
-	// SECS 连接状态
-	SECSConnectStatus SECS_ConnectStatus();
-	// 切换 SECS 的模式
-	SECSConnectModel SECS_SwitchModel(SECSConnectModel targetModel, bool sendEvent = true);
-
+	/////////////////////////////////// 通用接口 ////////////////////////////////////////////
 	void SECS_SetCommandParameters(SECSCommandParameters parameters);
 	void SECS_Connect();
 	void SECS_Disconnect();
 	void SECS_EventReport(int evID, std::map<CString, CString> stringMap);
 	void SECS_AlarmReport(int alID);
 	void SECS_ClearAlarmReport(int alID);
+	// SECS 当前的模式
+	SECSConnectModel SECS_ConnectModel();
+	// SECS 连接状态
+	SECSConnectStatus SECS_ConnectStatus();
+
+	/////////////////////////////////// 泰治SECS 接口 ///////////////////////////////////////
 	void SECS_AckReplyInfo(string &strAcktxid,string &strAckeid);
 	void SECS_SvGetInfo(CString strSvtxid,CString dtrSveid, std::map<CString, CString> svMap);
+	// 切换 SECS 的模式
+	SECSConnectModel SECS_SwitchModel(SECSConnectModel targetModel, bool sendEvent = true);
 
 private:
 	CSECSConnectBase *m_secs;
