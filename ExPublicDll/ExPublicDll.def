@@ -1,0 +1,52 @@
+; ExPublicDll.def : 声明 DLL 的模块参数。
+
+LIBRARY
+
+EXPORTS
+    ; 此处可以是显式导出
+CreateInterfaceFont  @2
+OpenFileData             @3
+ReadStringMem        @4
+ReadNumFloat              @5
+ReadNumLong           @6
+VarsMmToInch        @7
+VarsInchToMm     @8
+WriteStringMem  @9
+WriteNumFloat   @10
+WriteNumLong   @11
+SaveWriteData @12
+DeleteTheFile   @13
+CopyTheFile   @14
+MoveTheFile  @15
+RenameTheFile @16
+CreateTheDir @17
+DeleteTheDir @18
+FileIsEmpty  @20
+ReadLongArray      @23
+WriteLongArray     @24
+ReadFileFinish    @25
+ReadNumDouble     @26
+ReadDoubleArray   @27
+WriteDoubleArray  @28
+WriteNumDouble   @29
+LogWriteLog      @30
+GetDLLBmpRes      @31
+GetDLLIconRes      @32
+GetDLLStringRes      @33
+
+MyWriteProfileString  @34
+MyGetProfileString  @35
+MyWriteProfileChar  @36
+MyGetProfileChar  @37
+MyWriteProfileBool  @38
+MyGetProfileBool  @39
+MyGetProfileInt   @40
+MyWriteProfileInt   @41
+MyWriteProfileDouble   @42
+MyGetProfileDouble   @43
+MyGetProfileShort   @44
+MyWriteProfileShort   @45
+MyWriteProfileFloat   @46
+MyGetProfileFloat  @47
+GetProjFilePath   @48
+WriteCollectData   @49

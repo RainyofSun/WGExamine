@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\Camera">
+      <UniqueIdentifier>{2cb2e25b-040c-4568-8d50-07216b69458e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Camera">
+      <UniqueIdentifier>{e6482f32-9680-4cad-873f-50b12c10080c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Define">
+      <UniqueIdentifier>{68ced13a-da05-416c-83fc-d5950c6135eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Define">
+      <UniqueIdentifier>{114415cf-9222-417b-a0a0-df27e69149bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Leaper">
+      <UniqueIdentifier>{e20b7cd2-0526-42eb-b002-da103345e081}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Leaper">
+      <UniqueIdentifier>{966083d4-3380-4a3f-8c5b-6ef1eb13e64d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="PLCVersionDll.def">
+      <Filter>源文件</Filter>
+    </None>
+    <None Include="res\PLCVersionDll.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PLCVersionDll.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PLCVersionCamera.cpp">
+      <Filter>源文件\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="PLCVersionConfig.cpp">
+      <Filter>源文件\Define</Filter>
+    </ClCompile>
+    <ClCompile Include="PLCLeaperVsion.cpp">
+      <Filter>源文件\Leaper</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PLCVersionDll.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PLCVersionCamera.h">
+      <Filter>头文件\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="PLCVersionConfig.h">
+      <Filter>头文件\Define</Filter>
+    </ClInclude>
+    <ClInclude Include="PLCLeaperVsion.h">
+      <Filter>头文件\Leaper</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="PLCVersionDll.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

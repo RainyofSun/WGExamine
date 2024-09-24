@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\TaiZhi">
+      <UniqueIdentifier>{1f582123-e016-440a-87c8-d3f413a21105}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\KingEx">
+      <UniqueIdentifier>{fa9121bd-cd44-44a0-9edd-1e1579d84da6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\TaiZhi">
+      <UniqueIdentifier>{97676a2e-387a-4a8b-96f7-e1ffdb97ca9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\KingEx">
+      <UniqueIdentifier>{d4cc2d50-3814-4c39-a096-6f6186cdc250}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Base">
+      <UniqueIdentifier>{676a4748-7840-4694-9c5f-49aee72c3c2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Base">
+      <UniqueIdentifier>{dc23871a-c18b-415e-98d8-5b328b85cd43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Config">
+      <UniqueIdentifier>{d71ee385-7b79-44c4-bc75-bc32f4610060}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Config">
+      <UniqueIdentifier>{0ed7a82c-6904-4c9b-9447-af5116bb6034}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Tool">
+      <UniqueIdentifier>{7a8b030b-2383-4391-abd5-f6165550bd22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Tool">
+      <UniqueIdentifier>{9cf8f08e-5aa6-457b-b2a7-fd69bf23956e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="SECSDll.def">
+      <Filter>源文件</Filter>
+    </None>
+    <None Include="res\SECSDll.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SECSDll.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SECSSocket.cpp">
+      <Filter>源文件\TaiZhi</Filter>
+    </ClCompile>
+    <ClCompile Include="SECSConnectBase.cpp">
+      <Filter>源文件\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="SECSConfig.cpp">
+      <Filter>源文件\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="TaiZhiSECS.cpp">
+      <Filter>源文件\TaiZhi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Include\Json\JsonTool.cpp">
+      <Filter>源文件\Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="SafeArray.cpp">
+      <Filter>源文件\Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="TaiZhiSECSMessage.cpp">
+      <Filter>源文件\TaiZhi</Filter>
+    </ClCompile>
+    <ClCompile Include="SECSManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SECSDll.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SECSSocket.h">
+      <Filter>头文件\TaiZhi</Filter>
+    </ClInclude>
+    <ClInclude Include="SECSConnectBase.h">
+      <Filter>头文件\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="SECSConfig.h">
+      <Filter>头文件\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="TaiZhiSECS.h">
+      <Filter>头文件\TaiZhi</Filter>
+    </ClInclude>
+    <ClInclude Include="TaiZhiSECSMessage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Json\JsonTool.h">
+      <Filter>头文件\Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="SafeArray.h">
+      <Filter>头文件\Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="SECSManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SECSDll.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
