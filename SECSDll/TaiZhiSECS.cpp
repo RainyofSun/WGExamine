@@ -1,25 +1,16 @@
 #include "StdAfx.h"
 #include "TaiZhiSECS.h"
 
-UINT EventSocketThread(LPVOID lpParameter);
+UINT TaiZhiEventSocketThread(LPVOID lpParameter);
 
 CTaiZhiSECS::CTaiZhiSECS(void)
 {
 	m_socket = nullptr;
-	m_pEventSocketThread = nullptr;
-	bExitEventSocketThread = true;
 }
 
 CTaiZhiSECS::~CTaiZhiSECS(void)
 {
-	m_socket = nullptr;
-	if(m_pEventSocketThread != NULL)
-	{
-		bExitEventSocketThread = true;
-		::WaitForSingleObject(m_pEventSocketThread->m_hThread,INFINITE);
-		delete m_pEventSocketThread;
-		m_pEventSocketThread = NULL;
-	}
+	
 }
 
 void CTaiZhiSECS::SECS_Connect()
@@ -64,20 +55,7 @@ void CTaiZhiSECS::SECS_Connect()
 		SECS_SendMessage(sBase);
 		m_parameters.rpt_txid --;
 
-		if (m_pEventSocketThread != nullptr)
-		{
-			return;
-		}
-
-		m_pEventSocketThread = AfxBeginThread(EventSocketThread, this, 0, 0, CREATE_SUSPENDED);
-		if (m_pEventSocketThread == nullptr)
-		{
-			return;
-		}
-
-		bExitEventSocketThread = false;
-		m_pEventSocketThread->m_bAutoDelete = FALSE;
-		m_pEventSocketThread->ResumeThread();
+		resumeSECSThread(TaiZhiEventSocketThread);
 	}
 }
 
@@ -131,7 +109,7 @@ void CTaiZhiSECS::SECS_SendMessage(CString &strSend)
 }
 
 /*  消息事件发送  */
-UINT EventSocketThread(LPVOID lpParameter)
+UINT TaiZhiEventSocketThread(LPVOID lpParameter)
 {
 	CTaiZhiSECS *secs = (CTaiZhiSECS *)lpParameter;
 	while(!secs->bExitEventSocketThread)

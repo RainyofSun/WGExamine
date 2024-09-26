@@ -58,7 +58,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ModuleDefinitionFile>.\SECSDll.def</ModuleDefinitionFile>
       <AdditionalLibraryDirectories>..\Lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>..\Lib\ExPublicDll.lib;..\Lib\lib_json.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\Lib\ExPublicDll.lib;..\Lib\lib_json.lib;..\Lib\KingExGem_CPlus_X86.lib</AdditionalDependencies>
       <ImportLibrary>$(SolutionDir)Lib\$(TargetName).lib</ImportLibrary>
     </Link>
     <Midl>
@@ -104,6 +104,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Include\Json\JsonTool.cpp" />
+    <ClCompile Include="Helper.cpp" />
+    <ClCompile Include="KingExSECS.cpp" />
     <ClCompile Include="SafeArray.cpp" />
     <ClCompile Include="SECSConfig.cpp" />
     <ClCompile Include="SECSConnectBase.cpp" />
@@ -119,6 +121,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Include\Json\JsonTool.h" />
+    <ClInclude Include="Helper.h" />
+    <ClInclude Include="KingExSECS.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SafeArray.h" />
     <ClInclude Include="SECSConfig.h" />

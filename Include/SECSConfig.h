@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 enum SECSManufacturers
 {
@@ -24,6 +25,13 @@ enum SECSConnectStatus
 	SECS_CLOSE
 };
 
+enum SECSRecipeOperation 
+{
+	SECSRecipeOperation_Create = 1,
+	SECSRecipeOperation_Edit,
+	SECSRecipeOperation_Delete
+};
+
 struct SECSCommandParameters 
 {
 	CString strIp;
@@ -44,6 +52,10 @@ struct SECSCommandParameters
 	SECSManufacturers manufacturer;
 	// 接收消息回调窗口的注册名
 	CString hwndRegisterName;
+	// 亚控配置文件路径
+	CString kingKGPRJFilePath;
+	// 亚控配置配方路径
+	CString kingRecipeFilePath;
 
 	SECSCommandParameters()
 	{
@@ -66,8 +78,29 @@ struct SECSCommandParameters
 	}
 };
 
-#define WM_SOCKET_RECEIVE	WM_USER+100
-#define WM_SOCKET_CLOSE		WM_USER+101
+////////////////////////////// 泰治 SECS 消息 ////////////////////////////////////////////
+#define WM_TAIZHI_SOCKET_RECEIVE	WM_USER+100
+#define WM_TAIZHI_SOCKET_CLOSE		WM_USER+101
+////////////////////////////// 亚控 SECS 消息 ////////////////////////////////////////////
+#define WM_YK_REMOTE_COMMAND		WM_USER+200
+// secs online、offline 状态切换
+#define WM_YK_SECS_MODE_CHANGE		WM_USER+201
+// 查询配方列表
+#define WM_YK_REQ_PP_LIST			WM_USER+202
+// 删除配方
+#define WM_YK_DELETE_PP				WM_USER+203
+// 终端消息
+#define WM_YK_TERMINAL_MSG			WM_USER+204
+
+////////////////////////////// 亚控消息透传结构体 ////////////////////////////////////////////
+// 远端指令结构体
+struct YTRemoteCommandStruct 
+{
+	// 指令集
+	CString sRcmd;
+	std::string* sRcmdPanelName;
+	std::string* psVals; 
+};
 
 // 常量字符
 const static CString REPORT_ID_KEY = "REPORT_ID";

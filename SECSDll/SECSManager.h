@@ -24,6 +24,13 @@ public:
 	CSECSManager(void);
 	~CSECSManager(void);
 
+	/////////////////////////////////// 通用接口 ////////////////////////////////////////////
+	void SECS_SetCommandParameters(SECSCommandParameters parameters);
+	void SECS_Connect();
+	void SECS_Disconnect();
+	void SECS_EventReport(int evID, std::map<CString, CString> stringMap);
+	void SECS_AlarmReport(int alID);
+	void SECS_ClearAlarmReport(int alID);
 	// SECS 当前的模式
 	SECSConnectModel SECS_ConnectModel();
 	// SECS 连接状态
@@ -31,14 +38,13 @@ public:
 	// 切换 SECS 的模式
 	SECSConnectModel SECS_SwitchModel(SECSConnectModel targetModel, bool sendEvent = true);
 
-	void SECS_SetCommandParameters(SECSCommandParameters parameters);
-	void SECS_Connect();
-	void SECS_Disconnect();
-	void SECS_EventReport(int evID, std::map<CString, CString> stringMap);
-	void SECS_AlarmReport(int alID);
-	void SECS_ClearAlarmReport(int alID);
+	/////////////////////////////////// 泰治SECS 接口 ///////////////////////////////////////
 	void SECS_AckReplyInfo(string &strAcktxid,string &strAckeid);
 	void SECS_SvGetInfo(CString strSvtxid,CString dtrSveid, std::map<CString, CString> svMap);
+
+	/////////////////////////////////// 亚控 SECS 接口 ///////////////////////////////////////
+	void SECS_UploadPPList(CArray<CString>* ppids, long nMsgId);
+	void SECS_UploadPPBody(CString ppBody, CString ppid);
 
 private:
 	CSECSConnectBase *m_secs;
