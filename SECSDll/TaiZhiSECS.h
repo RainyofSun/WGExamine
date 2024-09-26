@@ -17,20 +17,12 @@
 #include "SECSConnectBase.h"
 #include "SECSSocket.h"
 #include "TaiZhiSECSMessage.h"
-#include "SafeArray.h"
 
 class CTaiZhiSECS: public CSECSConnectBase
 {
 public:
 	CTaiZhiSECS(void);
 	~CTaiZhiSECS(void);
-
-	// 事件数组
-	CSafeArray m_eventArray;
-	// 报警数组
-	CSafeArray m_alarmArray;
-	// 消警数组
-	CSafeArray m_clearArray;
 
 	std::map<int, std::map<CString, CString>> m_reportStringMap;
 

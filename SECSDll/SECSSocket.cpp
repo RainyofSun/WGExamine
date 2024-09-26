@@ -20,7 +20,7 @@ void CSECSSocket::OnReceive(int nErrorCode)
 	memset(buffer, 0, 1024);
 
 	this->Receive(buffer, 1024);
-	SendMessage(m_hwnd, WM_SOCKET_RECEIVE, 0, (LPARAM)(LPCTSTR)buffer);
+	SendMessage(m_hwnd, WM_TAIZHI_SOCKET_RECEIVE, 0, (LPARAM)(LPCTSTR)buffer);
 
 	if (buffer != NULL )
 	{
@@ -38,7 +38,7 @@ void CSECSSocket::OnClose(int nErrorCode)
 	memset(buffer, 0, 1024);
 
 	this->Receive(buffer, 1024);
-	SendMessage(m_hwnd, WM_SOCKET_CLOSE, 0, (LPARAM)(LPCTSTR)buffer);
+	SendMessage(m_hwnd, WM_TAIZHI_SOCKET_CLOSE, 0, (LPARAM)(LPCTSTR)buffer);
 
 	if (buffer != NULL )
 	{

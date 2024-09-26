@@ -42,6 +42,10 @@ public:
 	// 切换 SECS 的模式
 	SECSConnectModel SECS_SwitchModel(SECSConnectModel targetModel, bool sendEvent = true);
 
+	/////////////////////////////////// 亚控 SECS 接口 ///////////////////////////////////////
+	void SECS_UploadPPList(CArray<CString>* ppids, long nMsgId);
+	void SECS_UploadPPBody(CString ppBody, CString ppid);
+
 private:
 	CSECSConnectBase *m_secs;
 	SECSManufacturers m_manufacturner;

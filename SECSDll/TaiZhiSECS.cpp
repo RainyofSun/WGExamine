@@ -1,6 +1,8 @@
 #include "StdAfx.h"
 #include "TaiZhiSECS.h"
 
+UINT TaiZhiEventSocketThread(LPVOID lpParameter);
+
 CTaiZhiSECS::CTaiZhiSECS(void)
 {
 	m_socket = nullptr;
@@ -8,7 +10,7 @@ CTaiZhiSECS::CTaiZhiSECS(void)
 
 CTaiZhiSECS::~CTaiZhiSECS(void)
 {
-	m_socket = nullptr;
+	
 }
 
 void CTaiZhiSECS::SECS_Connect()
@@ -53,7 +55,7 @@ void CTaiZhiSECS::SECS_Connect()
 		SECS_SendMessage(sBase);
 		m_parameters.rpt_txid --;
 
-		resumeSECSThread();
+		resumeSECSThread(TaiZhiEventSocketThread);
 	}
 }
 
@@ -107,7 +109,7 @@ void CTaiZhiSECS::SECS_SendMessage(CString &strSend)
 }
 
 /*  消息事件发送  */
-UINT EventSocketThread(LPVOID lpParameter)
+UINT TaiZhiEventSocketThread(LPVOID lpParameter)
 {
 	CTaiZhiSECS *secs = (CTaiZhiSECS *)lpParameter;
 	while(!secs->bExitEventSocketThread)

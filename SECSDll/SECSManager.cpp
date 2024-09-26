@@ -123,3 +123,25 @@ SECSConnectModel CSECSManager::SECS_SwitchModel(SECSConnectModel targetModel, bo
 
 	return m_secs->m_parameters.secsModel;
 }
+
+void CSECSManager::SECS_UploadPPList(CArray<CString>* ppids, long nMsgId)
+{
+	if (m_manufacturner != SECSManufacturers_KingEx || m_secs == nullptr)
+	{
+		return;
+	}
+
+	CKingExSECS *king = dynamic_cast<CKingExSECS *>(m_secs);
+	king->SECS_UploadPPList(ppids, nMsgId);
+}
+
+void CSECSManager::SECS_UploadPPBody(CString ppBody, CString ppid)
+{
+	if (m_manufacturner != SECSManufacturers_KingEx || m_secs == nullptr)
+	{
+		return;
+	}
+
+	CKingExSECS *king = dynamic_cast<CKingExSECS *>(m_secs);
+	king->SECS_SendPPBody(ppBody, ppid);
+}

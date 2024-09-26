@@ -35,12 +35,16 @@ public:
 	SECSConnectModel SECS_ConnectModel();
 	// SECS 连接状态
 	SECSConnectStatus SECS_ConnectStatus();
+	// 切换 SECS 的模式
+	SECSConnectModel SECS_SwitchModel(SECSConnectModel targetModel, bool sendEvent = true);
 
 	/////////////////////////////////// 泰治SECS 接口 ///////////////////////////////////////
 	void SECS_AckReplyInfo(string &strAcktxid,string &strAckeid);
 	void SECS_SvGetInfo(CString strSvtxid,CString dtrSveid, std::map<CString, CString> svMap);
-	// 切换 SECS 的模式
-	SECSConnectModel SECS_SwitchModel(SECSConnectModel targetModel, bool sendEvent = true);
+
+	/////////////////////////////////// 亚控 SECS 接口 ///////////////////////////////////////
+	void SECS_UploadPPList(CArray<CString>* ppids, long nMsgId);
+	void SECS_UploadPPBody(CString ppBody, CString ppid);
 
 private:
 	CSECSConnectBase *m_secs;

@@ -20,14 +20,14 @@ CSECSConnectBase::~CSECSConnectBase(void)
 	}
 }
 
-void CSECSConnectBase::resumeSECSThread()
+void CSECSConnectBase::resumeSECSThread(AFX_THREADPROC pfnThreadProc)
 {
 	if (m_pEventSocketThread != nullptr)
 	{
 		return;
 	}
 
-	m_pEventSocketThread = AfxBeginThread(EventSocketThread, this, 0, 0, CREATE_SUSPENDED);
+	m_pEventSocketThread = AfxBeginThread(pfnThreadProc, this, 0, 0, CREATE_SUSPENDED);
 	if (m_pEventSocketThread == nullptr)
 	{
 		return;

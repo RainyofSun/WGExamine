@@ -16,11 +16,10 @@
  *----------------------------------------------------------------*/
 #pragma once
 #include "SECSConfig.h"
+#include "SafeArray.h"
 #include <map>
 
 using namespace std;
-
-UINT EventSocketThread(LPVOID lpParameter);
 
 #define DLL_EXPORT __declspec(dllexport)
 class DLL_EXPORT CSECSConnectBase
@@ -67,11 +66,18 @@ protected:
 	/**
 	 * 功能：开启事件线程
 	 */ 
-	void resumeSECSThread();
+	void resumeSECSThread(AFX_THREADPROC pfnThreadProc);
 
 public:
 	SECSCommandParameters m_parameters;
 	bool bExitEventSocketThread;
+
+	// 事件数组
+	CSafeArray m_eventArray;
+	// 报警数组
+	CSafeArray m_alarmArray;
+	// 消警数组
+	CSafeArray m_clearArray;
 
 protected:
 	CWinThread *m_pEventSocketThread;
