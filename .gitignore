@@ -42,3 +42,4 @@ PLCcommunicationDll/Debug/
 PLCVersionDll/Debug/
 SECSDll/Debug/
 WGExamine/Debug/
+*.suo
